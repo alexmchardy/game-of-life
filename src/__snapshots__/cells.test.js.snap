@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cells grid returns default grid 1`] = `
+Array [
+  Array [
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
+  Array [
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
+  Array [
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
+  Array [
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
+  Array [
+    false,
+    false,
+    false,
+    false,
+    false,
+  ],
+]
+`;

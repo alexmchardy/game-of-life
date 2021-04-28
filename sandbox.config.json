@@ -1,0 +1,5 @@
+{
+	"startScript": "start",
+	"template": "node",
+	"view": "terminal"
+}
