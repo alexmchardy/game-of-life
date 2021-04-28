@@ -1,4 +1,6 @@
-import Cells from './cells';
+/**
+ * @typedef {number[][]} CoordList - Array of coordinates (e.g [[0,0], [1,2]])
+ */
 
 function getCoord(x, y) {
 	return `${x},${y}`;
@@ -20,6 +22,11 @@ function getNeighborCoords(x, y, w, h) {
 	return coords;
 }
 
+/**
+ * Run one generation of game-of-life on the given array of live cells
+ * @param {CoordList} live - Array of live cell coordinates
+ * @returns {Coordlist} Next generation of live cells
+ */
 function run(live) {
 	const tally = {};
 	live.forEach(([x, y]) => {
