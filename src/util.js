@@ -4,6 +4,41 @@
  * @typedef {number[][]} CoordList - Array of coordinate tuples (e.g [[0,0], [1,2]])
  */
 
+/**
+ * Given a coordinate tuple (array), returns the coordinate as a string
+ * @param {number[]} coord - Coordinate tuple with 2 values: [x, y]
+ * @returns {string} String representing an x,y coordinate
+ */
+function getCoordString([x, y]) {
+	return `${x},${y}`;
+}
+
+/**
+ * Given a coordinate string, returns the coordinate tuple (array)
+ * @param {string} coordStr - String representing an x,y coordinate
+ * @returns {number[]} Coordinate tuple with 2 values: [x, y]
+ */
+function getCoordArray(coordStr) {
+	return coordStr.split(',').map(Number);
+}
+
+/**
+ * Given a coordinate, returns all neighbor coordinates surrounding it
+ * @param {number[]} coord - Coordinate tuple with 2 values: [x, y]
+ * @returns {CoordList} Array of neighbor coordinates
+ */
+function getNeighborCoords([x, y]) {
+	const coords = [];
+	for (let i = Math.max(0, x - 1); i <= x + 1; i++) {
+		for (let j = Math.max(0, y - 1); j <= y + 1; j++) {
+			if (i !== x || j !== y) {
+				coords.push([i, j]);
+			}
+		}
+	}
+	return coords;
+}
+
 // Simple cache for the most recently generated empty grid
 const cachedEmpty = {
 	height: null,
@@ -52,4 +87,4 @@ function grid({ size = 5, height, width, live = [] } = {}) {
 	return newGrid;
 }
 
-export { getEmptyGrid, grid };
+export { getCoordString, getCoordArray, getNeighborCoords, getEmptyGrid, grid };
