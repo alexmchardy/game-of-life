@@ -1,7 +1,7 @@
 // Utility functions
 
 /**
- * @typedef {number[][]} CoordList - Array of coordinates (e.g [[0,0], [1,2]])
+ * @typedef {number[][]} CoordList - Array of coordinate tuples (e.g [[0,0], [1,2]])
  */
 
 // Simple cache for the most recently generated empty grid
