@@ -22,21 +22,29 @@ function getCoordArray(coordStr) {
 	return coordStr.split(',').map(Number);
 }
 
+const neighborAddends = [
+	[-1, -1],
+	[-1, 0],
+	[-1, 1],
+	[0, -1],
+	[0, 1],
+	[1, -1],
+	[1, 0],
+	[1, 1],
+];
 /**
  * Given a coordinate, returns all neighbor coordinates surrounding it
  * @param {number[]} coord - Coordinate tuple with 2 values: [x, y]
  * @returns {CoordList} Array of neighbor coordinates
  */
-function getNeighborCoords([x, y]) {
-	const coords = [];
-	for (let i = Math.max(0, x - 1); i <= x + 1; i++) {
-		for (let j = Math.max(0, y - 1); j <= y + 1; j++) {
-			if (i !== x || j !== y) {
-				coords.push([i, j]);
-			}
+function getNeighborCoords(coord) {
+	return neighborAddends.reduce((neighbors, addend) => {
+		const neighborCoord = coord.map((n, i) => n + addend[i]);
+		if (neighborCoord[0] >= 0 && neighborCoord[1] >= 0) {
+			neighbors.push(neighborCoord);
 		}
-	}
-	return coords;
+		return neighbors;
+	}, []);
 }
 
 // Simple cache for the most recently generated empty grid
