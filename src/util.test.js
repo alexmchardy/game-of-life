@@ -1,4 +1,45 @@
-import { grid, getEmptyGrid } from './util';
+import {
+	getCoordString,
+	getCoordArray,
+	getNeighborCoords,
+	grid,
+	getEmptyGrid,
+} from './util';
+
+describe('getCoordString', () => {
+	test('returns comma separated string', () => {
+		expect(getCoordString([42, 7])).toEqual('42,7');
+	});
+});
+
+describe('getCoordArray', () => {
+	test('splits comma separated string into array', () => {
+		expect(getCoordArray('0,77')).toEqual([0, 77]);
+	});
+});
+
+describe('getNeighborCoords', () => {
+	test('returns 8 neighbors for a coordinate', () => {
+		expect(getNeighborCoords([9998, 7]).sort()).toEqual([
+			[9997, 6],
+			[9997, 7],
+			[9997, 8],
+			[9998, 6],
+			[9998, 8],
+			[9999, 6],
+			[9999, 7],
+			[9999, 8],
+		]);
+	});
+
+	test('returns 3 neighbors for [0,0]', () => {
+		expect(getNeighborCoords([0, 0]).sort()).toEqual([
+			[0, 1],
+			[1, 0],
+			[1, 1],
+		]);
+	});
+});
 
 describe('grid', () => {
 	test('returns default grid', () => {
